@@ -4,7 +4,6 @@ html {
 
 
 body {
-    box-sizing: border-box;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -20,7 +19,7 @@ body {
 
         .item {
             width: 100%;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Prevent padding from exceeding the width of 100% */
             border: 1px solid red;
             padding: 8px;
         }
