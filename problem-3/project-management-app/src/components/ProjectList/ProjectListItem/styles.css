@@ -1,0 +1,35 @@
+#project-list-item-root {
+  display: flex;
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0.5rem;
+    &.selected {
+      background-color: rgb(255, 196, 214);
+    }
+    > h4,
+    p {
+      margin: 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: aqua;
+    }
+  }
+  .status-indicator {
+    width: 1rem;
+    background-color: rebeccapurple;
+
+    &.finished {
+      background-color: green;
+    }
+    &.launched {
+      background-color: orange;
+    }
+    &.not-started {
+      background-color: grey;
+    }
+  }
+}

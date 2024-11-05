@@ -1,0 +1,12 @@
+#control-panel-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  button {
+    &:disabled {
+      pointer-events: none;
+    }
+  }
+}
