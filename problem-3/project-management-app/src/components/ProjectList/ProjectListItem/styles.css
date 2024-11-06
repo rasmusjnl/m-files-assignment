@@ -1,6 +1,6 @@
 #project-list-item-root {
   display: flex;
-  background-color: #fff;
+  background-color: #fafafa;
   .info {
     display: flex;
     flex-direction: column;

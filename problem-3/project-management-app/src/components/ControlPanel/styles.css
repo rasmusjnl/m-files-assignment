@@ -1,7 +1,6 @@
 #control-panel-root {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 8px;
 
   button {
