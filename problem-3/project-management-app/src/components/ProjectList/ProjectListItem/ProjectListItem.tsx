@@ -17,7 +17,12 @@ const projectStateToClass: Record<Project["state"], string> = {
 const ProjectListItem: React.FC<Props> = ({ project, selected, onSelect }: Props) => {
   return (
     <div id="project-list-item-root">
-      <div className={`info ${selected ? "selected" : ""}`} onClick={onSelect}>
+      <div
+        className={`info ${selected ? "selected" : ""} ${
+          project.state === "Finished" ? "finished" : ""
+        }`}
+        onClick={onSelect}
+      >
         <h4>{project.name}</h4>
         <p>{project.state}</p>
       </div>

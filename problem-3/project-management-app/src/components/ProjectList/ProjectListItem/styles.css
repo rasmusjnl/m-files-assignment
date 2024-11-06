@@ -8,6 +8,9 @@
     &.selected {
       background-color: rgb(255, 196, 214);
     }
+    &.finished {
+      pointer-events: none;
+    }
     > h4,
     p {
       margin: 0;
