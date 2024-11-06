@@ -5,6 +5,7 @@ import "./styles.css";
 interface Props {
   project: Project;
   selected: boolean;
+  selectable: boolean;
   onSelect: () => void;
 }
 
@@ -14,12 +15,12 @@ const projectStateToClass: Record<Project["state"], string> = {
   "Not started": "not-started",
 };
 
-const ProjectListItem: React.FC<Props> = ({ project, selected, onSelect }: Props) => {
+const ProjectListItem: React.FC<Props> = ({ project, selected, selectable, onSelect }: Props) => {
   return (
     <div id="project-list-item-root">
       <div
         className={`info ${selected ? "selected" : ""} ${
-          project.state === "Finished" ? "finished" : ""
+          project.state === "Finished" || !selectable ? "disabled" : ""
         }`}
         onClick={onSelect}
       >

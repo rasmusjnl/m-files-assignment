@@ -8,19 +8,17 @@ interface Props {
 
 const ControlPanel: React.FC<Props> = ({ selectedProjects, onStateChange }: Props) => {
   const disabled = selectedProjects.length === 0;
-  const tooltip = disabled ? "Select a project to enable" : "";
 
   return (
     <div id="control-panel-root">
       <button
         disabled={disabled || selectedProjects[0].state === "Launched"}
-        title={tooltip}
         onClick={() => onStateChange("Launched")}
       >
-        Launch project
+        Launch project(s)
       </button>
-      <button disabled={disabled} title={tooltip} onClick={() => onStateChange("Finished")}>
-        Finish project
+      <button disabled={disabled} onClick={() => onStateChange("Finished")}>
+        Finish project(s)
       </button>
     </div>
   );

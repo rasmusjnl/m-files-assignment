@@ -5,16 +5,18 @@ import { projectsData } from "./data";
 import ControlPanel from "@components/ControlPanel";
 import ProjectList from "@components/ProjectList";
 
-// TODO: rename variables
 const App = () => {
   const [projects, setProjects] = useState(projectsData);
   const [selectedProjects, setSelectedProjects] = useState<Project[]>([]);
 
   const handleSelect = (project: Project) => {
-    const index = selectedProjects.findIndex((p) => p.id === project.id);
-    if (index !== -1) {
-      // Remove project at index
-      setSelectedProjects(selectedProjects.filter((_, i) => i !== index));
+    const projectIndex = selectedProjects.findIndex(
+      (selectedProject) => selectedProject.id === project.id,
+    );
+
+    // Either add the project to selected projects or remove it
+    if (projectIndex !== -1) {
+      setSelectedProjects(selectedProjects.filter((_, i) => i !== projectIndex));
     } else {
       setSelectedProjects([...selectedProjects, project]);
     }
@@ -22,7 +24,7 @@ const App = () => {
 
   const handleStateChange = (state: Project["state"]) => {
     const updatedProjects = projects.map((project) =>
-      selectedProjects.findIndex((selectedProject) => selectedProject.id === project.id)
+      selectedProjects.find((selectedProject) => selectedProject.id === project.id)
         ? { ...project, state }
         : project,
     );
