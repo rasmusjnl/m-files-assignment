@@ -1,7 +1,7 @@
-import "./App.css";
+import "@/App.css";
 import { useState } from "react";
-import { Project } from "./types";
-import { projectsData } from "./data";
+import { Project } from "@/types";
+import { projectsData } from "@/data";
 import ControlPanel from "@components/ControlPanel";
 import ProjectList from "@components/ProjectList";
 

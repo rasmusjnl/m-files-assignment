@@ -1,5 +1,5 @@
+import "@components/ControlPanel/styles.css";
 import { Project } from "@/types";
-import "./styles.css";
 
 interface Props {
   selectedProjects: Project[];

@@ -1,6 +1,5 @@
+import "@components/ProjectList/ProjectListItem/styles.css";
 import { Project } from "@/types";
-
-import "./styles.css";
 
 interface Props {
   project: Project;
