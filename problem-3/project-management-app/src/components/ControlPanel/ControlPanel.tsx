@@ -2,18 +2,18 @@ import { Project } from "@/types";
 import "./styles.css";
 
 interface Props {
-  selectedProject: Project | null;
+  selectedProjects: Project[];
   onStateChange: (state: Project["state"]) => void;
 }
 
-const ControlPanel: React.FC<Props> = ({ selectedProject, onStateChange }: Props) => {
-  const disabled = selectedProject === null || selectedProject.state === "Finished";
+const ControlPanel: React.FC<Props> = ({ selectedProjects, onStateChange }: Props) => {
+  const disabled = selectedProjects.length === 0;
   const tooltip = disabled ? "Select a project to enable" : "";
 
   return (
     <div id="control-panel-root">
       <button
-        disabled={disabled || selectedProject.state === "Launched"}
+        disabled={disabled || selectedProjects[0].state === "Launched"}
         title={tooltip}
         onClick={() => onStateChange("Launched")}
       >

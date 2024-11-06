@@ -5,36 +5,39 @@ import { projectsData } from "./data";
 import ControlPanel from "@components/ControlPanel";
 import ProjectList from "@components/ProjectList";
 
+// TODO: rename variables
 const App = () => {
   const [projects, setProjects] = useState(projectsData);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProjects, setSelectedProjects] = useState<Project[]>([]);
 
   const handleSelect = (project: Project) => {
-    if (selectedProject?.id === project.id) {
-      setSelectedProject(null);
+    const index = selectedProjects.findIndex((p) => p.id === project.id);
+    if (index !== -1) {
+      // Remove project at index
+      setSelectedProjects(selectedProjects.filter((_, i) => i !== index));
     } else {
-      setSelectedProject(project);
+      setSelectedProjects([...selectedProjects, project]);
     }
   };
 
   const handleStateChange = (state: Project["state"]) => {
-    if (selectedProject) {
-      const updatedProjects = projects.map((project) =>
-        project.id === selectedProject.id ? { ...selectedProject, state } : project,
-      );
-      setProjects(updatedProjects);
-      setSelectedProject(null);
-    }
+    const updatedProjects = projects.map((project) =>
+      selectedProjects.findIndex((selectedProject) => selectedProject.id === project.id)
+        ? { ...project, state }
+        : project,
+    );
+    setProjects(updatedProjects);
+    setSelectedProjects([]);
   };
 
   return (
     <div id="app-container">
       <ProjectList
         projects={projects}
-        selectedProjectId={selectedProject?.id ?? null}
+        selectedProjects={selectedProjects}
         onSelect={handleSelect}
       />
-      <ControlPanel selectedProject={selectedProject} onStateChange={handleStateChange} />
+      <ControlPanel selectedProjects={selectedProjects} onStateChange={handleStateChange} />
     </div>
   );
 };
